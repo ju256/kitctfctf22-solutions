@@ -157,7 +157,7 @@ void edit() {
 }
 ```
 Consequently, the goal seems to be using the given overflow to bypass the overflow protection on the custom heap and get RCE.  
-The second bug, next to the overflow in the edit, lies is the way a new heap is created (see ``init_main_arena()``) when the old heap is full. Cookies on this new heap will be exactly the same because the seed used to generate those cookies is not updated. 
+The second bug, next to the overflow in the edit, lies in the way a new heap is created (see ``init_main_arena()``) when the old heap is full. Cookies on this new heap will be exactly the same because the seed used to generate those cookies is not updated. 
 ```c
 void init_main_arena(void *heap_start, CookieJar *cookie_jar) {
 	xmain_arena.head_chunk = NULL;
